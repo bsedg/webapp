@@ -1,1 +1,1 @@
-web: npm run serve:upgrade
+web: node dist/main.js
