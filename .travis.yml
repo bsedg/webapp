@@ -5,3 +5,6 @@ services:
 
 before_install:
   - docker build -t bsedg/webapp .
+
+script:
+  - npm run lint
