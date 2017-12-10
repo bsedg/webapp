@@ -17,3 +17,12 @@
     (click)="delete(event)">x</button>
   </li>
 </ul>
+
+<mat-list>
+  <h3 mat-subheader>Events</h3>
+  <mat-list-item *ngFor="let event of events">
+    <mat-icon mat-list-icon>event</mat-icon>
+    <h4 mat-line>{{event.title}}</h4>
+    <p mat-line> {{event.createdAt | date}} </p>
+  </mat-list-item>
+</mat-list>

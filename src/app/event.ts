@@ -3,4 +3,5 @@ export class Event {
     title: string;
     topics: string[];
     people: string[];
+    createdAt: Date;
 }
