@@ -1,45 +1,57 @@
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { EventsComponent } from './events/events.component';
-import { EventService } from './event.service';
+import { ArticleModule } from './article/article.module';
+import { AuthModule } from './auth/auth.module';
+import { EditorModule } from './editor/editor.module';
+import { HomeModule } from './home/home.module';
+import { ProfileModule } from './profile/profile.module';
+import { SettingsModule } from './settings/settings.module';
+import {
+  ApiService,
+  ArticlesService,
+  AuthGuard,
+  CommentsService,
+  FooterComponent,
+  HeaderComponent,
+  JwtService,
+  ProfilesService,
+  SharedModule,
+  TagsService,
+  UserService
+} from './shared';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
-
-import { FormsModule } from '@angular/forms';
-import { EventDetailComponent } from './event-detail/event-detail.component';
-import { MessagesComponent } from './messages/messages.component';
-import { MessageService } from './message.service';
-import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { EventSearchComponent } from './event-search/event-search.component';
+const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventsComponent,
-    EventDetailComponent,
-    MessagesComponent,
-    DashboardComponent,
-    EventSearchComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    )
+    ArticleModule,
+    AuthModule,
+    EditorModule,
+    HomeModule,
+    ProfileModule,
+    rootRouting,
+    SharedModule,
+    SettingsModule
   ],
-  providers: [EventService, MessageService],
+  providers: [
+    ApiService,
+    ArticlesService,
+    AuthGuard,
+    CommentsService,
+    JwtService,
+    ProfilesService,
+    TagsService,
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

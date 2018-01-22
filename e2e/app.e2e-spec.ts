@@ -1,14 +1,14 @@
-import { AppPage } from './app.po';
+import { Ng2RealApp } from './app.po';
 
-describe('events-webapp App', () => {
-  let page: AppPage;
+describe('ng-demo App', () => {
+  let page: Ng2RealApp;
 
   beforeEach(() => {
-    page = new AppPage();
+    page = new Ng2RealApp();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(page.getParagraphText()).toContain('conduit');
   });
 });
